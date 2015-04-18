@@ -1,0 +1,38 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+
+group = "com.toastcoders"
+targetCompatibility = 1.6
+sourceCompatibility = 1.6
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.toastcoders:yavijava:5.5.10'
+    testCompile 'junit:junit:4.12-beta-3'
+}
+
+sourceSets {
+
+    main {
+        java {
+        }
+    }
+}
+
+task fatJar(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'Cluster Properties Example',
+            'Implementation-Version': version,
+            'Main-Class': 'com.toastcoders.Main'
+    }
+    //baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
