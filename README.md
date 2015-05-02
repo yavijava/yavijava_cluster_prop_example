@@ -6,7 +6,7 @@ To run this sample you will need at least JAVA 1.6 and Gradle.
 
 Build:
 
-    ./gradle fatJar
+    ./gradlew fatJar
 
 The above command will build a jar file that contains all of the dependencies needed to run the sample.
 
